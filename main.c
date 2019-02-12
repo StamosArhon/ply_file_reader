@@ -7,7 +7,7 @@
 #include "vertex.c"
 #include "vertex.h"
 
-//void print_vertices(Vertex **p_array, int elements, int properties)
+void print_vertices(Vertex **p_array, int elements, int properties)
 {
   int i, j;
 
