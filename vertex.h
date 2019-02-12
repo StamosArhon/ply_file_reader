@@ -2,12 +2,13 @@
 #ifndef VERTEX_H
 #define VERTEX_H
 /* --------------------------- */
-typedef struct Vertex {
-    float *properties;
+typedef struct Vertex
+{
+  float *properties;
 } Vertex;
 /* --------------------------- */
 
 /* --------------------------- */
-void read_vertices(char *filename, Vertex **p_vertex_array, int elems, int props);
+void read_vertices(char *filename, Vertex **p_vertex_array, int elems, int props); //read_vertices function prototype
 /* --------------------------- */
 #endif /* VERTEX_H */
