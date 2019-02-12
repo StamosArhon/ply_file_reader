@@ -12,29 +12,35 @@ void read_vertices(char *filename, Vertex **p_vertex_array, int elems, int props
   char *line = malloc(MAX_LINE_SIZE*sizeof(char));
   size_t line_sz;
   char *token;
+  ssize_t read;
   int i, j;
 
   Vertex *p_vertex;
 
-  while (getline(&line, &line_sz, input) >= 0 && !strstr(line, "end_header")) {}
+  while ((read = getline(&line, &line_sz, input)) >= 0)
+  {
+    if (strstr(line, "end_header"))
+    {
+      for (i = 0; i < elems; i++)
+      {
+        if (getline(&line, &line_sz, input) < 0) break;
 
-  for (i = 0; i < elems; i++) {
-    if (getline(&line, &line_sz, input) < 0) break;
+        p_vertex = malloc(sizeof(Vertex));
+        p_vertex->properties = malloc(props*sizeof(float));
 
-    p_vertex = malloc(sizeof(Vertex));
-    p_vertex->properties = malloc(props*sizeof(float));
+        token = strtok(line, " ");
+        p_vertex->properties[0] = atof(token);
 
-    token = strtok(line, " ");
-    p_vertex->properties[0] = atof(token);
+        for (j = 1; j < props; j++)
+        {
+          token = strtok(NULL, " ");
+          p_vertex->properties[j] = atof(token);
+        }
 
-    for (j = 1; j < props; j++) {
-      token = strtok(NULL, " ");
-      p_vertex->properties[j] = atof(token);
+        p_vertex_array[i] = p_vertex;
+      }
     }
-
-    p_vertex_array[i] = p_vertex;
   }
-
   free(line);
   fclose(input);
 }

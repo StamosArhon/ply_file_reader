@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "header.c"
 #include "header.h"
+#include "vertex.c"
 #include "vertex.h"
 
 void print_vertices(Vertex **p_array, int elements, int properties)
