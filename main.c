@@ -6,15 +6,19 @@
 #include "header.h"
 #include "vertex.c"
 #include "vertex.h"
+#include "binarytree.h"
+#include "binarytree.c"
 
 void print_vertices(Vertex **p_array, int elements, int properties)
 {
   int i, j;
 
   printf("Vertices:\n");
-  for (i = 0; i < elements; i++) {
+  for (i = 0; i < elements; i++)
+  {
     printf("%i|\t", i+1);
-    for (j = 0; j < properties; j++) {
+    for (j = 0; j < properties; j++)
+    {
       printf("%f\t", p_array[i]->properties[j]);
     }
     printf("\n");
@@ -39,7 +43,8 @@ int main(void)
 
   /* Memory clean-up */
   free(p_header);
-  for (i = 0; i < p_header->elements[EL_VERTEX]; i++) {
+  for (i = 0; i < p_header->elements[EL_VERTEX]; i++)
+  {
     free(p_vertex_array[i]);
   }
   free(p_vertex_array);
