@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "header.h"
+#include "binarytree.h"
 
 #define MAX_LINE_SIZE 81
 
@@ -27,6 +28,7 @@ void read_header(char *filename, struct Header *header)
   {
     if (!strstr(line, " "))
       continue;
+
     token = strtok(line, " ");
 
     if (!token)

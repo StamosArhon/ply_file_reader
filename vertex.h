@@ -2,8 +2,9 @@
 #ifndef VERTEX_H
 #define VERTEX_H
 /* --------------------------- */
-typedef struct Vertex {
-    float *properties;
+typedef struct Vertex
+{
+  float *properties;
 } Vertex;
 /* --------------------------- */
 

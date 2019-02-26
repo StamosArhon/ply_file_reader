@@ -3,8 +3,13 @@
 #include <string.h>
 
 #include "vertex.h"
+#include "binarytree.h"
 
 #define MAX_LINE_SIZE 81
+
+/*----------Global Variables----------*/
+struct VertexTree* root = NULL; //Initialize the tree as blank
+/*----------Global Variables----------*/
 
 void read_vertices(char *filename, Vertex **p_vertex_array, int elems, int props)
 {
@@ -23,7 +28,8 @@ void read_vertices(char *filename, Vertex **p_vertex_array, int elems, int props
     {
       for (i = 0; i < elems; i++)
       {
-        if (getline(&line, &line_sz, input) < 0) break;
+        if (getline(&line, &line_sz, input) < 0)
+          break;
 
         p_vertex = malloc(sizeof(Vertex));
         p_vertex->properties = malloc(props*sizeof(float));
@@ -37,7 +43,8 @@ void read_vertices(char *filename, Vertex **p_vertex_array, int elems, int props
           p_vertex->properties[j] = atof(token);
         }
 
-        p_vertex_array[i] = p_vertex;
+        //p_vertex_array[i] = p_vertex;
+        insertData(root, p_vertex);
       }
     }
   }
