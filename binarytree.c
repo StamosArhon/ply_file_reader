@@ -81,3 +81,15 @@ void treePrint (VertexTree* root)
 		treePrint (root->right_node);
 	}
 }
+void treeMemoryErase (VertexTree* root)
+{
+	if (root == NULL)
+		return;
+
+	else
+	{
+		free (root);
+		treeMemoryErase (root->left_node);
+		treeMemoryErase (root->right_node);
+	}
+}
