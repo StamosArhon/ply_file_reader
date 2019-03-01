@@ -9,6 +9,6 @@ typedef struct Vertex
 /* --------------------------- */
 
 /* --------------------------- */
-void read_vertices(char *filename, Vertex **p_vertex_array, int elems, int props);
+void read_vertices(char *filename, int elems, int props);
 /* --------------------------- */
 #endif /* VERTEX_H */

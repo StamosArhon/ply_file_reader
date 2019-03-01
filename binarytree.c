@@ -1,25 +1,19 @@
 /*========================================================================================================*/
-
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "binarytree.h"
 /*========================================================================================================*/
 
-/*--------Binary Search Tree Struct Definition--------*/
-struct binarySearchTreeNode
-{
-	float data;
-	struct binarySearchTreeNode* left;
-	struct binarySearchTreeNode* right;
-};
-/*--------Binary Search Tree Struct Definition--------*/
+/*---MACROS---*/
+#define MAX_LINE_SIZE 81
+/*---MACROS---*/
 
 /*========================================================================================================*/
 
 /*----------Global Variables----------*/
-struct binaryTree* root = NULL; //Initialize the tree as blank
-struct binarySearchTreeNode coordinates; //The varibale that will hold the coordinates from the plyfile
-int input_data; //
+int i,j; //Itterators
+//VertexTree* root; //Initialize the tree as blank
 /*----------Global Variables----------*/
 
 /*========================================================================================================*/
@@ -27,11 +21,11 @@ int input_data; //
 /*-------   CreateNode: A Function that creates a new node in the binary tree    ------*/
 /*-------   with three slots, one for the left child, one for the righ and one   ------*/
 /*-------   for the data we want each node to hold, in this case the coordinates ------*/
-struct binaryTree* CreateNode(int data)
+VertexTree* createNode(Vertex* vertex_data)
 {
-	struct binaryTree* newNode = (struct binaryTree*)malloc(sizeof(struct binaryTree));
-	newNode->data = data;
-	newNode->left = newNode->right = NULL;
+	VertexTree* newNode = (VertexTree*)malloc(sizeof(VertexTree));
+	newNode->vertex_data = vertex_data;
+	newNode->left_node = newNode->right_node = NULL;
 	return newNode;
 }
 /*-------   CreateNode: A Function that creates a new node in the binary tree    ------*/
@@ -43,21 +37,21 @@ struct binaryTree* CreateNode(int data)
 /*------- InsertData: A function that checks the binary tree in regards to the inserted value -------*/
 /*------- and places the value in the appropriate node. If the necessary node does not exist  -------*/
 /*------- it creates a new one with a call to the "CreateNode" function                       -------*/
-struct binaryTree* InsertData(struct binaryTree* root, int data)
+VertexTree* insertData(VertexTree* root, Vertex *vertex_data)
 {
 	if (root == NULL) //If the root is blank create a new node
 	{
-		root = CreateNode(data);
+		root = createNode(vertex_data);
 	}
 
-	else if (data <= root->data) //If the inserted value is smaller than the root, place it on the left child of that tree
+	else if (vertex_data <= root->vertex_data) //If the inserted value is smaller than the root, place it on the left child of that tree
 	{
-		root->left = InsertData(root->left, data);
+		root->left_node = insertData(root->left_node, vertex_data);
 	}
 
 	else //If the inserted value is higher than the root, place it on the right child of that tree
 	{
-		root->right = InsertData(root->right, data);
+		root->right_node = insertData(root->right_node, vertex_data);
 	}
 
 	return root;
@@ -70,45 +64,20 @@ struct binaryTree* InsertData(struct binaryTree* root, int data)
 
 /*----- TreeSearch: A function to help us locate whether or not a specific value is present -----*/
 /*----- in our binary tree or nor, generating the appropriate message and exit in response  -----*/
-void TreeSearch(struct binaryTree* root, int data)
+void treePrint (VertexTree* root)
 {
-	if (root == NULL) //If the root is blank print that the value was not found and exit with -1
+	if (root == NULL)
 	{
-		printf ("\n+=================================+");
-		printf ("\n| Value not found! Terminating... |");
-		printf ("\n+=================================+");
-		exit(-1);
-	}
-
-	else if (root->data == data) //If the data element is equal to the value we are searching for print that the value was found and exit with 0
-	{
-		printf ("\n+====================================+");
-		printf ("\n| Value found! Exiting succefully... |");
-		printf ("\n+====================================+");
-		exit(0);
-	}
-
-	else if (data <= root->data) //If the requested value is smaller than the root, search for it on the left child of that tree
-	{
-		return Search(root->left, data);
+		return;
 	}
 
 	else
 	{
-		return Search(root->right, data); //If the requested value is higher than the root, search for it on the right child of that tree
+		for (i=0; i<3;i++)
+		{
+			printf ("%.1f\t", root->vertex_data->properties[i]);
+		}
+		treePrint (root->left_node);
+		treePrint (root->right_node);
 	}
 }
-/*----- TreeSearch: A function to help us locate whether or not a specific value is present -----*/
-/*----- in our binary tree or nor, generating the appropriate message and exit in response  -----*/
-
-/*========================================================================================================*/
-
-/*----The main function of the program that makes the initial calls to the other functions----*/
-int main()
-{
-
-}
-/*----The main function of the program that makes the initial calls to the other functions----*/
-
-/*========================================================================================================*/
-																						/*END OF FILE*/
