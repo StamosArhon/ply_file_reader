@@ -1,6 +1,7 @@
 /* HEADER GUARD: preventing double include */
 #ifndef VERTEX_H
 #define VERTEX_H
+
 /* --------------------------- */
 typedef struct Vertex
 {

@@ -18,7 +18,7 @@ void read_vertices(char *filename, int elems, int props)
   size_t line_sz;
   char *token;
   ssize_t read;
-  int i, j;
+  int i, j, k=1;
   //float vertex_data;
   Vertex *vertex_data;
 
@@ -42,7 +42,8 @@ void read_vertices(char *filename, int elems, int props)
           vertex_data->properties[j] = atof(token);
         }
 
-        insertData(root, vertex_data);
+        root = insertData(root, vertex_data, k);
+        k++;
       }
     }
   }
