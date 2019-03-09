@@ -144,7 +144,9 @@ GenericTreeNode *FindGenericTreeNode(int id, GenericTree *tree)
 GenericTreeNode *InsertToBranch(GenericTreeNode *root, GenericTreeNode *node)
 {
   if (root == NULL || node->id == root->id)
+  {
     return node;
+  }
 
   if (node->id < root->id)
   {
@@ -220,7 +222,7 @@ GenericTreeNode *minIdNode(GenericTreeNode *root)
 
 /*----------------Function: DeleteFromBranch----------------*/
 
-struct GenericTreeNode *DeleteFromBranch(struct GenericTreeNode *root, int id)
+struct GenericTreeNode *DeleteFromBranch(GenericTreeNode *root, int id)
 {
   if (root == NULL)
     return root;
@@ -271,7 +273,7 @@ struct GenericTreeNode *DeleteFromBranch(struct GenericTreeNode *root, int id)
 
 /*----------------Function: DeleteGenericTreeNode----------------*/
 
-void DeleteGenericTreeNode(struct GenericTree *tree, int id)
+void DeleteGenericTreeNode(GenericTree *tree, int id)
 {
   if (FindGenericTreeNode(id, tree) != NULL)
   {
@@ -293,20 +295,12 @@ void DeleteGenericTreeNode(struct GenericTree *tree, int id)
 
 /*----------------Function: printGenericTree----------------*/
 
-void printGenericTree(struct GenericTreeNode *root)
+void printGenericTree(GenericTreeNode *root)
 {
-	int i,j;
-	int elems = 5, props = 3;
   if (root != NULL)
   {
     printGenericTree(root->left);
-		for (i=0;i<elems;i++)
-		{
-			for(j=1;j<props;j++)
-			{
-				printf("%d: %f\t", root->id, *((float *)root->data->p_vertex_array[i]->p_vertex->properties[j]));
-			}
-		}
+		printf("%d: %.1f\n", root->id, *((float *)root->data));
     printGenericTree(root->right);
   }
 }

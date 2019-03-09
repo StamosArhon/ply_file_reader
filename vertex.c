@@ -14,8 +14,12 @@ void read_vertices(char *filename, GenericTree *VertexTree, int elems, int props
   char *token;
   ssize_t read;
   int i, j;
-  int vertex_data_node_id;
-  Vertex *p_vertex;
+  int id = 1;
+  float *vertex_data = malloc((elems*props)*sizeof(float)); //Question: Do I need to clear the memory for that or does the "FreeGenericTree" cover it? Because I can't clear the memory for it inside this file since that will effect the printGenericTree function and I cant clear the memory in main because it doesnt "see" this variable (is making it a global variable viable option?)
+
+  //char *vertex_id [3] = {"x", "y", "z"};
+  //int vertex_data_node_id;
+  //Vertex *p_vertex;
 
   while ((read = getline(&line, &line_sz, input)) >= 0)
   {
@@ -26,26 +30,22 @@ void read_vertices(char *filename, GenericTree *VertexTree, int elems, int props
         if (getline(&line, &line_sz, input) < 0)
           break;
 
-        //p_vertex = malloc(sizeof(Vertex));
-        //p_vertex->properties = malloc(props*sizeof(float));
-
         token = strtok(line, " ");
-        InsertGenericTreeData(VertexTree, i+1, token);
+        vertex_data[id-1] = atof(token);
 
-        //p_vertex->properties[0] = atof(token);
+        InsertGenericTreeData(VertexTree, id, &vertex_data[id-1]);
+        id++;
 
         for (j = 1; j < props; j++)
         {
           token = strtok(NULL, " ");
-          InsertGenericTreeData(VertexTree, i+1, token);
-          //p_vertex->properties[j] = atof(token);
+          vertex_data[id-1] = atof(token);
+          InsertGenericTreeData(VertexTree, id, &vertex_data[id-1]);
+          id++;
         }
-
-        //p_vertex_array[i] = p_vertex;
       }
     }
   }
-
   free(line);
   fclose(input);
 }
