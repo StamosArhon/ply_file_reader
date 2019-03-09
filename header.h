@@ -17,7 +17,7 @@ typedef struct Header
 {
     int elements[MAX_EL];
     int el_props[MAX_EL];
-    void *properties;
+    //void *properties;
 } Header;
 /* --------------------------- */
 

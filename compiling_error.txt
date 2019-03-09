@@ -1,0 +1,7 @@
+c:/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/ld.exe: C:\Users\Stamos\AppData\Local\Temp\ccMJtUWe.o:main.c:(.text+0xf): undefined reference to `NewGenericTree'
+c:/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/ld.exe: C:\Users\Stamos\AppData\Local\Temp\ccMJtUWe.o:main.c:(.text+0x37): undefined reference to `read_header'
+c:/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/ld.exe: C:\Users\Stamos\AppData\Local\Temp\ccMJtUWe.o:main.c:(.text+0x75): undefined reference to `read_vertices'
+c:/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/ld.exe: C:\Users\Stamos\AppData\Local\Temp\ccMJtUWe.o:main.c:(.text+0x83): undefined reference to `printGenericTree'
+c:/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/ld.exe: C:\Users\Stamos\AppData\Local\Temp\ccMJtUWe.o:main.c:(.text+0xdd): undefined reference to `EmptyGenericTree'
+c:/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/ld.exe: C:\Users\Stamos\AppData\Local\Temp\ccMJtUWe.o:main.c:(.text+0xe9): undefined reference to `FreeGenericTree'
+collect2.exe: error: ld returned 1 exit status

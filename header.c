@@ -3,7 +3,6 @@
 #include <string.h>
 
 #include "header.h"
-#include "binarytree.h"
 
 #define MAX_LINE_SIZE 81
 
@@ -16,7 +15,8 @@ void read_header(char *filename, struct Header *header)
   int last_element = -1;
   int i;
 
-  if (!header) return;
+  if (!header)
+    return;
 
   for (i = EL_VERTEX; i <= EL_FACE; i++)
   {

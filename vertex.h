@@ -2,14 +2,16 @@
 #ifndef VERTEX_H
 #define VERTEX_H
 
+#include "ply_file_data_tree.h"
+
 /* --------------------------- */
 typedef struct Vertex
 {
-  float *properties;
+  void *properties;
 } Vertex;
 /* --------------------------- */
 
 /* --------------------------- */
-void read_vertices(char *filename, int elems, int props);
+void read_vertices(char *filename, GenericTree *VertexTree, int elems, int props);
 /* --------------------------- */
 #endif /* VERTEX_H */
