@@ -10,6 +10,7 @@
 
 int main(void)
 {
+  int line_change = 0;
   Header *p_header = malloc(sizeof(Header));
   GenericTree *VertexTree = NewGenericTree();
 
@@ -17,16 +18,19 @@ int main(void)
 
   read_vertices("test_file.ply", VertexTree, p_header->elements[EL_VERTEX], p_header->el_props[EL_VERTEX]);
 
-  /* Print Tree */
-  printGenericTree (VertexTree->root);
-  /* Print Tree */
+  /*------Print Tree------*/
+  printf ("\n=========");
+  printf ("\nVertices:");
+  printf ("\n=========\n\n");
+  printGenericTree (VertexTree->root, line_change);
+  /*------Print Tree------*/
 
 
-  /* Memory clean-up */
+  /*------Memory clean-up------*/
   free(p_header);
   EmptyGenericTree(VertexTree);
   FreeGenericTree(VertexTree);
-  /* Memory clean-up */
+  /*------Memory clean-up------*/
 
   return 0;
 }
