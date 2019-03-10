@@ -14,6 +14,7 @@
 typedef struct GenericTreeNode
 {
   int id; /**< The id of each node */
+  char *sub_id;
   void *data; /**< The data that carrys the node. This must be allocated by the user. */
   struct GenericTreeNode *left; /**< The left branch of the node */
   struct GenericTreeNode *right; /**< The right branch of the node */
@@ -47,7 +48,7 @@ GenericTree *NewGenericTree(void);
  *
  *  @return void
  */
-GenericTreeNode *InsertGenericTreeData(GenericTree *tree, int id, void *data);
+GenericTreeNode *InsertGenericTreeData(GenericTree *tree, int id, char *sub_id, void *data);
 
 /** @brief Delete a node from a tree, based on its id.
  *
@@ -58,7 +59,7 @@ GenericTreeNode *InsertGenericTreeData(GenericTree *tree, int id, void *data);
  *
  *  @return void
  */
-void DeleteGenericTreeNode(GenericTree *tree, int id);
+void DeleteGenericTreeNode(GenericTree *tree, int id, char *sub_id);
 
 /** @brief Empty a tree without deleting it
  *
