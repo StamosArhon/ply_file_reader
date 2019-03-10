@@ -94,11 +94,12 @@ void FreeGenericTree(GenericTree *tree)
 
 /*----------------Function: NewGenericTree----------------*/
 
-GenericTreeNode *NewGenericTreeNode(int id, void *data)
+GenericTreeNode *NewGenericTreeNode(int id, char *sub_id, void *data)
 {
   GenericTreeNode *new_node = malloc(sizeof(GenericTreeNode));
 
   new_node->id = id;
+  new_node->sub_id = sub_id;
   new_node->data = data;
   new_node->left = NULL;
   new_node->right = NULL;
@@ -112,16 +113,16 @@ GenericTreeNode *NewGenericTreeNode(int id, void *data)
 
 /*----------------Function: SearchNodeById----------------*/
 
-GenericTreeNode *SearchNodeById(int id, GenericTreeNode *node)
+GenericTreeNode *SearchNodeById(int id, char *sub_id, GenericTreeNode *node)
 {
-  if (node == NULL || node->id == id)
+  if (node == NULL || (node->id == id && node->sub_id == sub_id))
     return node;
 
   if (id < node->id)
-    return SearchNodeById(id, node->left);
+    return SearchNodeById(id, sub_id, node->left);
 
   else
-    return SearchNodeById(id, node->right);
+    return SearchNodeById(id, sub_id, node->right);
 }
 
 /*----------------Function: SearchNodeById----------------*/
@@ -130,9 +131,9 @@ GenericTreeNode *SearchNodeById(int id, GenericTreeNode *node)
 
 /*----------------Function: FindGenericTreeNode----------------*/
 
-GenericTreeNode *FindGenericTreeNode(int id, GenericTree *tree)
+GenericTreeNode *FindGenericTreeNode(int id, char *sub_id, GenericTree *tree)
 {
-  return SearchNodeById(id, tree->root);
+  return SearchNodeById(id, sub_id, tree->root);
 }
 
 /*----------------Function: FindGenericTreeNode----------------*/
@@ -143,7 +144,7 @@ GenericTreeNode *FindGenericTreeNode(int id, GenericTree *tree)
 
 GenericTreeNode *InsertToBranch(GenericTreeNode *root, GenericTreeNode *node)
 {
-  if (root == NULL || node->id == root->id)
+  if (root == NULL || (node->id == root->id &&node->sub_id == root->sub_id))
   {
     return node;
   }
@@ -167,7 +168,7 @@ GenericTreeNode *InsertToBranch(GenericTreeNode *root, GenericTreeNode *node)
 
 GenericTreeNode *InsertGenericTreeNode(GenericTree *tree, GenericTreeNode *node)
 {
-  if (FindGenericTreeNode(node->id, tree) != NULL)
+  if (FindGenericTreeNode(node->id, node->sub_id, tree) != NULL)
   {
     printf("Replacing id: %d\n", node->id);
   }
@@ -192,9 +193,9 @@ GenericTreeNode *InsertGenericTreeNode(GenericTree *tree, GenericTreeNode *node)
 
 /*----------------Function: InsertGenericTreeData----------------*/
 
-GenericTreeNode *InsertGenericTreeData(GenericTree *tree, int id, void *data)
+GenericTreeNode *InsertGenericTreeData(GenericTree *tree, int id, char *sub_id, void *data)
 {
-  GenericTreeNode *new_node = NewGenericTreeNode(id, data);
+  GenericTreeNode *new_node = NewGenericTreeNode(id, sub_id, data);
   return InsertGenericTreeNode(tree, new_node);
 }
 
@@ -273,9 +274,9 @@ struct GenericTreeNode *DeleteFromBranch(GenericTreeNode *root, int id)
 
 /*----------------Function: DeleteGenericTreeNode----------------*/
 
-void DeleteGenericTreeNode(GenericTree *tree, int id)
+void DeleteGenericTreeNode(GenericTree *tree, int id, char *sub_id)
 {
-  if (FindGenericTreeNode(id, tree) != NULL)
+  if (FindGenericTreeNode(id, sub_id, tree) != NULL)
   {
     tree->items--;
   }
@@ -300,7 +301,7 @@ void printGenericTree(GenericTreeNode *root)
   if (root != NULL)
   {
     printGenericTree(root->left);
-		printf("%d: %.1f\n", root->id, *((float *)root->data));
+		printf("%d%s: %.1f\n", root->id, root->sub_id, *((float *)root->data));
     printGenericTree(root->right);
   }
 }
