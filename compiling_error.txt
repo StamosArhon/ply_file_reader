@@ -1,9 +1,0 @@
-c:/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/ld.exe: C:\Users\Stamos\AppData\Local\Temp\ccS5jLeB.o:vertex.c:(.text+0x45): undefined reference to `vertex_data'
-c:/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/ld.exe: C:\Users\Stamos\AppData\Local\Temp\ccS5jLeB.o:vertex.c:(.text+0xb9): undefined reference to `vertex_data'
-c:/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/ld.exe: C:\Users\Stamos\AppData\Local\Temp\ccS5jLeB.o:vertex.c:(.text+0xd4): undefined reference to `vertex_data'
-c:/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/ld.exe: C:\Users\Stamos\AppData\Local\Temp\ccS5jLeB.o:vertex.c:(.text+0xf8): undefined reference to `InsertGenericTreeData'
-c:/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/ld.exe: C:\Users\Stamos\AppData\Local\Temp\ccS5jLeB.o:vertex.c:(.text+0x12c): undefined reference to `vertex_data'
-c:/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/ld.exe: C:\Users\Stamos\AppData\Local\Temp\ccS5jLeB.o:vertex.c:(.text+0x147): undefined reference to `vertex_data'
-c:/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/ld.exe: C:\Users\Stamos\AppData\Local\Temp\ccS5jLeB.o:vertex.c:(.text+0x16b): undefined reference to `InsertGenericTreeData'
-c:/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/ld.exe: c:/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../libmingw32.a(main.o):(.text.startup+0xb0): undefined reference to `WinMain@16'
-collect2.exe: error: ld returned 1 exit status
