@@ -14,15 +14,15 @@ int main(void)
   Header *p_header = malloc(sizeof(Header));
   GenericTree *VertexTree = NewGenericTree();
 
-  read_header("test_file.ply", p_header);
+  read_header("cube.ply", p_header);
 
-  read_vertices("test_file.ply", VertexTree, p_header->elements[EL_VERTEX], p_header->el_props[EL_VERTEX]);
+  //read_vertices("cube.ply", VertexTree, p_header->elements[EL_VERTEX], p_header->el_props[EL_VERTEX]);
 
   /*------Print Tree------*/
   printf ("\n=========");
   printf ("\nVertices:");
   printf ("\n=========\n\n");
-  printGenericTree (VertexTree->root, line_change);
+  //printGenericTree (VertexTree->root, line_change);
   /*------Print Tree------*/
 
 

@@ -66,6 +66,8 @@ void read_header(char *filename, struct Header *header)
     }
   }
 
+  printf ("Number of faces: %d\n\n", header->elements[EL_FACE]);
+
   free(line);
   fclose(input);
 }
