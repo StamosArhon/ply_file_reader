@@ -28,8 +28,8 @@ int main(void)
 
   /*------Memory clean-up------*/
   free(p_header);
-  EmptyGenericTree(VertexTree);
-  FreeGenericTree(VertexTree);
+  //EmptyGenericTree(VertexTree);
+  //FreeGenericTree(VertexTree);
   /*------Memory clean-up------*/
 
   return 0;
