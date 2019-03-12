@@ -92,6 +92,6 @@ void FreeGenericTree(GenericTree *tree);
  *
  *  @return void
  */
-void printGenericTree(GenericTreeNode *root, int line_change);
+void printGenericTree(GenericTreeNode *root, int line_change, int properties);
 
 #endif // PLY_FILE_DATA_TREE_H
