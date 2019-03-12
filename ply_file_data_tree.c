@@ -296,20 +296,20 @@ void DeleteGenericTreeNode(GenericTree *tree, int id, char *sub_id)
 
 /*----------------Function: printGenericTree----------------*/
 
-void printGenericTree(GenericTreeNode *root, int line_change)
+void printGenericTree(GenericTreeNode *root, int line_change, int properties)
 {
   if (root != NULL)
   {
-    printGenericTree(root->left, line_change);
+    printGenericTree(root->left, line_change, properties);
 		printf("|%d%s: %.1f|\t\t", root->id, root->sub_id, *((float *)root->data));
     line_change++;
 
-    if (line_change % 3 == 0)
+    if (line_change % properties == 0)
     {
       printf ("\n\n");
     }
 
-    printGenericTree(root->right, line_change);
+    printGenericTree(root->right, line_change, properties);
   }
 }
 
