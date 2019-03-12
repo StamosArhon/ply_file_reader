@@ -16,20 +16,20 @@ int main(void)
 
   read_header("cube.ply", p_header);
 
-  //read_vertices("cube.ply", VertexTree, p_header->elements[EL_VERTEX], p_header->el_props[EL_VERTEX]);
+  read_vertices("cube.ply", VertexTree, p_header->elements[EL_VERTEX], p_header->el_props[EL_VERTEX]);
 
   /*------Print Tree------*/
   printf ("\n=========");
   printf ("\nVertices:");
   printf ("\n=========\n\n");
-  //printGenericTree (VertexTree->root, line_change);
+  printGenericTree (VertexTree->root, line_change, p_header->el_props[EL_VERTEX]);
   /*------Print Tree------*/
 
 
   /*------Memory clean-up------*/
   free(p_header);
-  //EmptyGenericTree(VertexTree);
-  //FreeGenericTree(VertexTree);
+  EmptyGenericTree(VertexTree);
+  FreeGenericTree(VertexTree);
   /*------Memory clean-up------*/
 
   return 0;
