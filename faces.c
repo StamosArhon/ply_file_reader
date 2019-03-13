@@ -18,7 +18,7 @@ void read_faces (char *filename, GenericTree *FacesTree, int faces_elements, int
   int id = 1;
   float *faces_data = malloc((faces_elements*MAX_LINE_SIZE)*sizeof(float));
   float faces_properties;
-  char *faces_sub_id [5] = {"1", "2", "3", "4", "5"};
+  char *faces_sub_id [5] = {"a", "b", "c", "d", "e"};
 
   while ((read = getline(&line, &line_sz, input)) >= 0)
   {
