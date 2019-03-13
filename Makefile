@@ -3,10 +3,10 @@ CFLAGS= -c -Wall
 
 all: ply_reader
 
-ply_reader:	main.o header.o vertex.o ply_file_data_tree.o
-								$(CC) main.o header.o vertex.o ply_file_data_tree.o -o ply_reader
+ply_reader:	main.o header.o vertex.o faces.o ply_file_data_tree.o
+								$(CC) main.o header.o vertex.o faces.o ply_file_data_tree.o -o ply_reader
 
-main.o:	main.c header.h vertex.h ply_file_data_tree.h
+main.o:	main.c header.h vertex.h faces.h ply_file_data_tree.h
 				$(CC) $(CFLAGS) -c main.c
 
 header.o: header.c header.h
@@ -14,6 +14,9 @@ header.o: header.c header.h
 
 vertex.o:	vertex.c vertex.h
 						$(CC) $(CFLAGS) -c vertex.c
+
+faces.o:	vertex.c vertex.h ply_file_data_tree.h
+												$(CC) $(CFLAGS) -c faces.c
 
 ply_file_data_tree.o:	ply_file_data_tree.c ply_file_data_tree.h
 												$(CC) $(CFLAGS) -c ply_file_data_tree.c
