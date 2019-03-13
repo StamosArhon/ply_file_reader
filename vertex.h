@@ -12,6 +12,6 @@ typedef struct Vertex
 /* --------------------------- */
 
 /* --------------------------- */
-void read_vertices(char *filename, GenericTree *VertexTree, int elems, int props);
+void read_vertices (char *filename, GenericTree *VertexTree, int vertex_elements, int vertex_properties, int *last_vertex_position);
 /* --------------------------- */
 #endif /* VERTEX_H */
