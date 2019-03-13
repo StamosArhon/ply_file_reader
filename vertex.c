@@ -41,7 +41,7 @@ void read_vertices(char *filename, GenericTree *VertexTree, int vertex_elements,
           id++;
         }
       }
-      last_vertex_position = ftell(input);
+      *last_vertex_position = ftell(input);
     }
   }
   free(line);

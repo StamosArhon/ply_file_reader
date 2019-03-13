@@ -12,7 +12,7 @@
 int main(void)
 {
   int line_change = 0;
-  int *last_vertex_position;
+  int *last_vertex_position = malloc(sizeof(int));
   Header *p_header = malloc(sizeof(Header));
   GenericTree *VertexTree = NewGenericTree();
   GenericTree *FacesTree = NewGenericTree();
