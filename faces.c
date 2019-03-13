@@ -45,33 +45,4 @@ void read_faces (char *filename, GenericTree *FacesTree, int faces_elements, int
       }
     }
   }
-
-  //while ((read = getline(&line, &line_sz, input)) >= 0)
-  //{
-    /*if (strstr(line, "end_header"))
-    {
-      for (i = 0; )
-      {
-        printf ("check!");
-
-        for (i = 0; i < 6; i++)
-        {
-          if (getline(&line, &line_sz, input) < 0)
-            break;
-
-          token = strtok(line, " ");
-          number = atof(token);
-
-          printf ("%.1f\t", number);
-
-          for (j = 1; j < 5; j++)
-          {
-            token = strtok(NULL, " ");
-            number = atof(token);
-            printf ("%.1f\t", number);
-          }
-        }
-      }
-    }*/
-  //}
 }
