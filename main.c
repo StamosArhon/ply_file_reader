@@ -16,6 +16,7 @@ int main(void)
   Header *p_header = malloc(sizeof(Header));
   GenericTree *VertexTree = NewGenericTree();
   GenericTree *FacesTree = NewGenericTree();
+  char *test_sub_id [3] = {"x", "y", "z"};
 
   read_header ("cube.ply", p_header);
   read_vertices ("cube.ply", VertexTree, p_header->elements[EL_VERTEX], p_header->el_props[EL_VERTEX], last_vertex_position);
@@ -37,11 +38,22 @@ int main(void)
   printGenericTree (FacesTree->root, line_change, 5);
   /*------Print Faces Tree------*/
 
+  printf ("\n\n");
+
+  /*------Print Expanded Faces Tree------*/
+  if (FindGenericTreeNode(2, "x", VertexTree)!=NULL)
+  {
+    printf ("Found!");
+  }
+  /*------Print Expanded Faces Tree------*/
+
 
   /*------Memory clean-up------*/
   free(p_header);
   EmptyGenericTree(VertexTree);
   FreeGenericTree(VertexTree);
+  EmptyGenericTree(FacesTree);
+  FreeGenericTree(FacesTree);
   /*------Memory clean-up------*/
 
   return 0;

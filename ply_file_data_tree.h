@@ -28,6 +28,11 @@ typedef struct GenericTree
 
 /* Generic Tree Functions */
 
+GenericTreeNode *FindGenericTreeNode(int id, char *sub_id, GenericTree *tree);
+
+GenericTreeNode *SearchNodeById(int id, char *sub_id, GenericTreeNode *node);
+
+
 /** @brief Creates new Binary Tree
  *
  *  This function allocates and initializes a pointer to an empty binary search tree.

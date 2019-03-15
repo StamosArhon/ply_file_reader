@@ -116,13 +116,19 @@ GenericTreeNode *NewGenericTreeNode(int id, char *sub_id, void *data)
 GenericTreeNode *SearchNodeById(int id, char *sub_id, GenericTreeNode *node)
 {
   if (node == NULL || (node->id == id && node->sub_id == sub_id))
+  {
     return node;
+  }
 
-  if (id < node->id)
+  if (id < node->id || (id == node->id && sub_id < node->sub_id))
+  {
     return SearchNodeById(id, sub_id, node->left);
+  }
 
-  else
+  else if (id > node->id || (id == node->id && sub_id > node->sub_id))
+  {
     return SearchNodeById(id, sub_id, node->right);
+  }
 }
 
 /*----------------Function: SearchNodeById----------------*/
@@ -144,17 +150,17 @@ GenericTreeNode *FindGenericTreeNode(int id, char *sub_id, GenericTree *tree)
 
 GenericTreeNode *InsertToBranch(GenericTreeNode *root, GenericTreeNode *node)
 {
-  if (root == NULL || (node->id == root->id &&node->sub_id == root->sub_id))
+  if (root == NULL || (node->id == root->id && node->sub_id == root->sub_id))
   {
     return node;
   }
 
-  if (node->id < root->id)
+  if (node->id < root->id || (node->id == root->id && node->sub_id < root->sub_id))
   {
     root->left = InsertToBranch(root->left, node);
   }
 
-  else
+  else if (node->id > root->id || (node->id == root->id && node->sub_id > root->sub_id))
   {
     root->right = InsertToBranch(root->right, node);
   }
@@ -170,7 +176,7 @@ GenericTreeNode *InsertGenericTreeNode(GenericTree *tree, GenericTreeNode *node)
 {
   if (FindGenericTreeNode(node->id, node->sub_id, tree) != NULL)
   {
-    printf("Replacing id: %d\n", node->id);
+    printf("Replacing id: %d\tSub id: %s\n", node->id, node->sub_id);
   }
 
   else
@@ -306,12 +312,22 @@ void printGenericTree(GenericTreeNode *root, int line_change, int properties)
 
     if (line_change % properties == 0)
     {
-      printf ("\n\n");
+      printf ("\n");
     }
 
     printGenericTree(root->right, line_change, properties);
   }
 }
+
+/*void print_Node_by_Id_And_Sub_Id (int id, char *sub_id, GenericTreeNode root)
+{
+  if (root->id == id && root->sub_id == sub_id)
+  {
+    printf ("|%d%s|: %.1f"\t\t, root->id, root->sub_id, *((float *)root->data));
+  }
+
+  else if (root->id<id)
+}*/
 
 /*----------------Function: printGenericTree----------------*/
 
