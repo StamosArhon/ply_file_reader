@@ -47,11 +47,11 @@ void read_faces (char *filename, GenericTree *FacesTree, int faces_elements, int
   }
 }
 
-void print_faces (GenericTree *VertexTree, GenericTree *FacesTree)
+/*void print_faces (GenericTree *VertexTree, GenericTree *FacesTree)
 {
   GenericTreeNode *TempNode = malloc(sizeof(GenericTreeNode));
 
   TempNode = FindGenericTreeNode(0, "a", FacesTree);
 
   printf ("\n\nNode Data: %f\n\n", *((float *)TempNode->data));
-}
+}*/

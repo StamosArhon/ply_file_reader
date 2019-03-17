@@ -120,15 +120,11 @@ GenericTreeNode *SearchNodeById(int id, char *sub_id, GenericTreeNode *node)
     return node;
   }
 
-  if (id < node->id || (id == node->id && sub_id < node->sub_id))
-  {
+  else if (id < node->id || (id == node->id && sub_id < node->sub_id))
     return SearchNodeById(id, sub_id, node->left);
-  }
 
-  else if (id > node->id || (id == node->id && sub_id > node->sub_id))
-  {
+  else
     return SearchNodeById(id, sub_id, node->right);
-  }
 }
 
 /*----------------Function: SearchNodeById----------------*/
@@ -151,16 +147,14 @@ GenericTreeNode *FindGenericTreeNode(int id, char *sub_id, GenericTree *tree)
 GenericTreeNode *InsertToBranch(GenericTreeNode *root, GenericTreeNode *node)
 {
   if (root == NULL || (node->id == root->id && node->sub_id == root->sub_id))
-  {
     return node;
-  }
 
-  if (node->id < root->id || (node->id == root->id && node->sub_id < root->sub_id))
+  else if (node->id < root->id || (node->id == root->id && node->sub_id < root->sub_id))
   {
     root->left = InsertToBranch(root->left, node);
   }
 
-  else if (node->id > root->id || (node->id == root->id && node->sub_id > root->sub_id))
+  else
   {
     root->right = InsertToBranch(root->right, node);
   }
@@ -180,6 +174,7 @@ GenericTreeNode *InsertGenericTreeNode(GenericTree *tree, GenericTreeNode *node)
   }
 
   else
+
   {
     tree->items++;
   }
@@ -229,19 +224,19 @@ GenericTreeNode *minIdNode(GenericTreeNode *root)
 
 /*----------------Function: DeleteFromBranch----------------*/
 
-struct GenericTreeNode *DeleteFromBranch(GenericTreeNode *root, int id)
+struct GenericTreeNode *DeleteFromBranch(GenericTreeNode *root, int id, char* sub_id)
 {
   if (root == NULL)
     return root;
 
-  if (id < root->id)
+  if (id < root->id || (id == root->id && sub_id < root->sub_id))
   {
-    root->left = DeleteFromBranch(root->left, id);
+    root->left = DeleteFromBranch(root->left, id, sub_id);
   }
 
-  else if (id > root->id)
+  else if (id > root->id || (id == root->id && sub_id < root->sub_id))
   {
-    root->right = DeleteFromBranch(root->right, id);
+    root->right = DeleteFromBranch(root->right, id, sub_id);
   }
 
   else
@@ -265,9 +260,10 @@ struct GenericTreeNode *DeleteFromBranch(GenericTreeNode *root, int id)
       struct GenericTreeNode *temp_node = minIdNode(root->right);
 
       root->id = temp_node->id;
+      root->sub_id = temp_node->sub_id;
       root->data = temp_node->data;
 
-      root->right = DeleteFromBranch(root->right, temp_node->id);
+      root->right = DeleteFromBranch(root->right, temp_node->id, temp_node->sub_id);
     }
   }
 
@@ -293,7 +289,7 @@ void DeleteGenericTreeNode(GenericTree *tree, int id, char *sub_id)
     return;
   }
 
-  DeleteFromBranch(tree->root, id);
+  DeleteFromBranch(tree->root, id, sub_id);
 }
 
 /*----------------Function: DeleteGenericTreeNode----------------*/
