@@ -17,7 +17,7 @@ void read_faces (char *filename, GenericTree *FacesTree, int faces_elements, int
   int i, j;
   int id = 1;
   float *faces_data = malloc((faces_elements*MAX_LINE_SIZE)*sizeof(float));
-  float faces_properties;
+  float faces_index_number;
   char *faces_sub_id [5] = {"a", "b", "c", "d", "e"};
 
   while ((read = getline(&line, &line_sz, input)) >= 0)
@@ -31,11 +31,11 @@ void read_faces (char *filename, GenericTree *FacesTree, int faces_elements, int
 
         token = strtok(line, " ");
         faces_data[id-1] = atof(token);
-        faces_properties = faces_data[id-1];
+        faces_index_number = faces_data[id-1];
         InsertGenericTreeData(FacesTree, i+1, faces_sub_id[0], &faces_data[id-1]);
         id++;
 
-        for (j = 1; j <= faces_properties; j++)
+        for (j = 1; j <= faces_index_number; j++)
         {
           token = strtok(NULL, " ");
           faces_data[id-1] = atof(token);
@@ -47,11 +47,32 @@ void read_faces (char *filename, GenericTree *FacesTree, int faces_elements, int
   }
 }
 
-/*void print_faces (GenericTree *VertexTree, GenericTree *FacesTree)
+void print_faces (GenericTree *VertexTree, GenericTree *FacesTree, int faces_elements)
 {
+  GenericTreeNode *Iterator = malloc(sizeof(GenericTreeNode));
   GenericTreeNode *TempNode = malloc(sizeof(GenericTreeNode));
+  char *vertex_sub_id[3] = {"x", "y", "z"};
+  char *faces_sub_id[4] = {"a", "b", "c", "d"};
+  int count;
+  int i,j;
 
-  TempNode = FindGenericTreeNode(0, "a", FacesTree);
+  printf ("\n======");
+  printf ("\nFaces:");
+  printf ("\n======\n\n");
 
-  printf ("\n\nNode Data: %f\n\n", *((float *)TempNode->data));
-}*/
+  for (i=0; i<faces_elements; i++)
+  {
+    Iterator = FindGenericTreeNode(i+1, faces_sub_id[0], FacesTree);
+    count = (int)(*((float*)Iterator->data));
+    printf ("|Face number %d|:\t", i+1);
+
+    for (j=0; j<count-1; j++)
+    {
+      TempNode = FindGenericTreeNode(i+1, vertex_sub_id[j], VertexTree);
+      printf("\n|%d%s\t%.1f|", i+1, vertex_sub_id[j], *((float *)TempNode->data));
+    }
+    printf("\n\n");
+  }
+  free(Iterator);
+  free(TempNode);
+}
