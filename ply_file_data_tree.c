@@ -116,9 +116,7 @@ GenericTreeNode *NewGenericTreeNode(int id, char *sub_id, void *data)
 GenericTreeNode *SearchNodeById(int id, char *sub_id, GenericTreeNode *node)
 {
   if (node == NULL || (node->id == id && node->sub_id == sub_id))
-  {
     return node;
-  }
 
   else if (id < node->id || (id == node->id && sub_id < node->sub_id))
     return SearchNodeById(id, sub_id, node->left);
@@ -174,7 +172,6 @@ GenericTreeNode *InsertGenericTreeNode(GenericTree *tree, GenericTreeNode *node)
   }
 
   else
-
   {
     tree->items++;
   }
