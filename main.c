@@ -7,11 +7,16 @@
 #include "vertex.h"
 #include "faces.h"
 #include "ply_file_data_tree.h"
+#include "header.c"
+#include "vertex.c"
+#include "ply_file_data_tree.c"
+#include "faces.c"
 /*-----------Included Project Files-----------*/
 
 int main(void)
 {
   int line_change = 0;
+
   int *last_vertex_position = malloc(sizeof(int));
   Header *p_header = malloc(sizeof(Header));
   GenericTree *VertexTree = NewGenericTree();
@@ -40,13 +45,8 @@ int main(void)
   printf ("\n\n");
 
   /*------Print Expanded Faces Tree------*/
-  //Here we will add the printing of the
-  //expanded faces tree which will print
-  //all faces indexes as collections of
-  //vertices.
+  print_faces (VertexTree, FacesTree, p_header->elements[EL_FACE]);
   /*------Print Expanded Faces Tree------*/
-
-
 
   /*------Memory clean-up------*/
   free(p_header);
