@@ -56,9 +56,10 @@ void print_faces (GenericTree *VertexTree, GenericTree *FacesTree, int faces_ele
   int count;
   int i,j;
 
-  printf ("\n======");
-  printf ("\nFaces:");
-  printf ("\n======\n\n");
+
+  printf ("\n====================");
+  printf ("\nExpanded Faces List:");
+  printf ("\n====================\n\n");
 
   for (i=0; i<faces_elements; i++)
   {
