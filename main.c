@@ -45,7 +45,7 @@ int main(void)
   printf ("\n\n");
 
   /*------Print Expanded Faces Tree------*/
-  print_faces (VertexTree, FacesTree, p_header->elements[EL_FACE]);
+  print_faces (VertexTree, FacesTree, p_header->elements[EL_FACE], p_header->el_props[EL_VERTEX]);
   /*------Print Expanded Faces Tree------*/
 
   /*------Memory clean-up------*/
